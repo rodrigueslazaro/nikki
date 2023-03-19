@@ -19,7 +19,7 @@ vector<string> break_weekdays_into_vector(string str) {
 }
 
 void schedule::assign_today_schedule() {
-    ofstream schedule_file(TODAY_DATE+".nk", ios::trunc);
+    ofstream schedule_file(NIKKI_DIR+TODAY_DATE+".nk", ios::trunc);
     int c = 0;
     if (schedule_file.is_open()){
         schedule_file << "「" 
@@ -31,24 +31,31 @@ void schedule::assign_today_schedule() {
                       << "日"
                       << TODAY_IN_WEEK_JP
                       << "」" << endl << endl;
-        schedule_file << "__記録 ~~~φ(・∀・*)__\n"
-                      << "__睡眠: \n"
-                      << "__気分: \n"
-                      << "__食品: \n"
-                      << "__ヨガ: \n"
-                      << "__運動: \n"
-                      << "---------------------\n\n"
-                      << "__日程 ｡*(ノ°益°)ノ__" << endl << endl;
-        for (auto event : events) {
-            schedule_file << event.get_name() << endl;
-            for (auto chunk : event.get_chunks()) {
-                schedule_file << "  "<< chunk.get_time() << endl;
-                for (auto todo : chunk.get_todos()) {
-                    schedule_file << "  TODO" << todo << endl;
-                }
+        if (!TRACKERS.empty()) {
+            schedule_file << "__記録 ~~~φ(・∀・*)__" << endl;
+            for (auto tracker : TRACKERS) {
+                schedule_file << "__" << tracker << ": " <<endl;
             }
-            schedule_file << endl;
+            schedule_file << "---------------------" << endl << endl;
         }
+        if (!events.empty()) {
+            schedule_file << "__日程 ｡*(ノ°益°)ノ__" << endl << endl;
+            for (auto event : events) {
+                if (event.get_name().find("$") != -1) {
+                    schedule_file << event.get_name() << endl;
+                } else {
+                    schedule_file << event.get_name() << " $white" << endl;
+                }
+                for (auto chunk : event.get_chunks()) {
+                    schedule_file << "  "<< chunk.get_time() << endl;
+                    for (auto todo : chunk.get_todos()) {
+                        schedule_file << "  TODO" << todo << endl;
+                    }
+                }
+                schedule_file << endl;
+            }
+        }
+        
         schedule_file.close();
     } else {
         cout << "Unable to open file." << endl;
@@ -57,7 +64,7 @@ void schedule::assign_today_schedule() {
 
 void schedule::learn_today_schedule() {
     string line;
-    ifstream file(SCHEDULE_FILE_NAME);
+    ifstream file(NIKKI_DIR+SCHEDULE_FILE_NAME);
     event new_event;
     chunk new_chunk;
     string new_name;

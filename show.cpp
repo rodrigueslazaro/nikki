@@ -1,3 +1,4 @@
+#include "constants.h"
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -6,7 +7,7 @@
 using namespace std;
 
 int main() {
-    ifstream input_file("2023-03-18.nk");
+    ifstream input_file(NIKKI_DIR+TODAY_DATE+".nk");
     string line;
 
     map<std::string, std::string> colors = {
@@ -24,11 +25,14 @@ int main() {
         size_t color_pos;
         int todos = -1;
         while (getline(input_file, line)) {
-            if ((line.find("__") != -1 && line.find("§") != -1)
-                || line.find("to") != -1
+            if (line.find("「") != -1) {
+                cout << line;
+            }
+            if ((line.find("__") != -1 && line.find("$") != -1)
+                || line.find(" to ") != -1
                 || line.find("TODO") != -1) {
-                if ((color_pos = line.find("§")) != -1) {
-                    color_name = line.substr(color_pos+2);
+                if ((color_pos = line.find("$")) != -1) {
+                    color_name = line.substr(color_pos+1);
                     system(("echo \e["+colors[color_name]+"m"
                                     +line.substr(0, color_pos)
                                     +"\e[0m").c_str());
@@ -39,6 +43,9 @@ int main() {
                                     +"\e[0m").c_str());
 
                 }
+            }
+            if (line.empty()) {
+                cout << endl;
             }
         }
         input_file.close();
