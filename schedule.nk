@@ -6,7 +6,6 @@ __朝のルーティン $yellow
   - シャワーを浴びる
   - 健康的な朝食を取る
   - 小説の本を読む
-  ---
 
 __夜のルーティン $purple
   # Mon Tue Wed Thu Fri Sat Sun
@@ -15,13 +14,11 @@ __夜のルーティン $purple
   - シャワーを浴びる
   - Duolingoをやる
   - 小説の本を読む
-  ---
 
 __Tópicos Especiais em Eng. Comp. $green
   # Mon
   7:50 to 9:30 
   - Assistir aula de TEEC
-  ---
 
 __Redes de Computadores $green
   # Tue
@@ -31,7 +28,6 @@ __Redes de Computadores $green
   # Thu
   7:50 to 9:30
   - Assistir aula de RC
-  ---
 
 __Programação Paralela e Distribuida $green
   # Tue
@@ -41,25 +37,21 @@ __Programação Paralela e Distribuida $green
   # Wed
   9:40 to 11:20
   - Assistir aula de PPD
-  ---
 
 __Sistemas de Controle $green
   # Thu
   13:00 to 15:30
   - Assistir aula de SC
-  ---
 
 __Orientação de TCC $green
   # Thu
   15:40 to 17:20
   - Assistir aula de OTCC
-  ---
 
 __Trabalhar no TCC $red
   # Mon Wed Fri
   13:00 to 15:00
   - Ler e resumir 2 artigos
-  ---
 
 __Study Algorithms $blue
   # Mon Fri
@@ -69,7 +61,6 @@ __Study Algorithms $blue
   # Wed
   7:50 to 09:30
   - Continue reading SICP
-  ---
 
 __Study Mathematics $blue
   # Tue Fri
@@ -79,10 +70,9 @@ __Study Mathematics $blue
   # Thu
   9:40 to 11:20
   - Continue reading CC
-  ---
 
 __Dance dance dance
-  # Sat
+  # Sun
   7:50 to 9:20
   - dance a lot boy
-  ---
+
