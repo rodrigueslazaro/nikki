@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <algorithm>
 using namespace std;
 
 vector<string> break_weekdays_into_vector(string str) {
@@ -60,6 +61,10 @@ void schedule::assign_today_schedule() {
     } else {
         cout << "Unable to open file." << endl;
     }
+}
+
+bool compare_time(const event& a, const event& b) {
+    return a.get_chunks()[0].get_start() <= b.get_chunks()[0].get_start();
 }
 
 void schedule::learn_today_schedule() {
@@ -124,4 +129,10 @@ void schedule::learn_today_schedule() {
     } else {
         cout << "Unable to open file\n";
     }
+    /*
+    for (auto e : events) {
+        cout << e.get_chunks()[0].get_start() << endl;
+    }
+    */
+    sort(events.begin(), events.end(), compare_time);
 }

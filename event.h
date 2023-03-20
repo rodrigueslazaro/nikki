@@ -22,7 +22,7 @@ public:
     string get_name() {
         return name;
     }
-    vector<chunk> get_chunks() {
+    vector<chunk> get_chunks() const{
         return chunks;
     }
     void show_event() {

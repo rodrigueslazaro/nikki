@@ -28,6 +28,9 @@ public:
     void set_start(int new_start) {
         start = new_start;
     }
+    int get_start() {
+        return start;
+    }
     vector<string> get_todos() {
         return todos;
     }
